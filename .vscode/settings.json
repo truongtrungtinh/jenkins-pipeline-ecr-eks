@@ -1,0 +1,19 @@
+{
+  "workbench.colorTheme": "One Dark Pro",
+  "files.autoSave": "off",
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": true,
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": true,
+  "editor.wordWrap": "on",
+  "editor.trimAutoWhitespace": false,
+  "eslint.run": "onSave",
+
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#333333",
+    "statusBar.noFolderBackground": "#333333",
+    "statusBar.debuggingBackground": "#263238"
+  },
+  "git.ignoreLimitWarning": true
+}

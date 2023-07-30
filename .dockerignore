@@ -1,0 +1,17 @@
+node_modules
+npm-debug.log
+yarn-error.log
+.npm
+.yarn
+.git
+.gitignore
+.vscode
+.idea
+.eslint*
+.prettier*
+coverage
+dist
+build
+logs
+*.log
+yarn.lock
