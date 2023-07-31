@@ -17,4 +17,4 @@ spec:
         - name: natours
           image: 686317197365.dkr.ecr.us-east-1.amazonaws.com/natours:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 80
