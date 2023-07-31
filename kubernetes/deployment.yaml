@@ -1,20 +1,39 @@
-# deployment.yaml
+# # deployment.yaml
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: natours
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: natours
+#   template:
+#     metadata:
+#       labels:
+#         app: natours
+#     spec:
+#       containers:
+#         - name: natours
+#           image: 686317197365.dkr.ecr.us-east-1.amazonaws.com/natours:latest
+#           ports:
+#             - containerPort: 80
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: natours
+  name: nginx
 spec:
-  replicas: 3
   selector:
     matchLabels:
-      app: natours
+      app: nginx
+  replicas: 1
   template:
     metadata:
       labels:
-        app: natours
+        app: nginx
     spec:
       containers:
-        - name: natours
-          image: 686317197365.dkr.ecr.us-east-1.amazonaws.com/natours:latest
-          ports:
-            - containerPort: 80
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
