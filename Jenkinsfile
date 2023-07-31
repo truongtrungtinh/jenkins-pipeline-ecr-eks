@@ -16,7 +16,7 @@ pipeline {
         stage('Build and Push to ECR') {
             steps {
                 script {
-                    sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 686317197365.dkr.ecr.us-east-1.amazonaws.com"
+                    sh "aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 686317197365.dkr.ecr.us-east-1.amazonaws.com"
                     sh "docker build -t natours ."
                     sh "docker tag natours:latest 686317197365.dkr.ecr.us-east-1.amazonaws.com/natours:latest"
                     sh "docker push 686317197365.dkr.ecr.us-east-1.amazonaws.com/natours:latest"
@@ -29,8 +29,8 @@ pipeline {
                 script {
                     dir('kubernetes') {
                         sh "aws eks update-kubeconfig --name natours-eks-cluster"
-                        sh "kubectl apply -f ./nginx-deployment.yaml"
-                        sh "kubectl apply -f ./nginx-service.yaml"
+                        sh "kubectl apply -f ./kubernetes/deployment.yaml"
+                        sh "kubectl apply -f ./kubernetes/service.yaml"
                     }
                 }
             }
