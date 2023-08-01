@@ -29,10 +29,10 @@ pipeline {
                 script {
                     dir('kubernetes') {
                         sh "aws eks update-kubeconfig --name natours-eks-cluster"
-                        sh """kubectl create secret docker-registry ecr-credentials \\
-                        --docker-server=686317197365.dkr.ecr.us-east-1.amazonaws.com \\
-                        --docker-username=AWS \\
-                        --docker-password=\$(aws ecr get-login-password --region us-east-1)"""
+                        // sh """kubectl create secret docker-registry ecr-credentials \\
+                        // --docker-server=686317197365.dkr.ecr.us-east-1.amazonaws.com \\
+                        // --docker-username=AWS \\
+                        // --docker-password=\$(aws ecr get-login-password --region us-east-1)"""
 
                         sh "kubectl apply -f ./deployment.yaml"
                         sh "kubectl apply -f ./service.yaml"
