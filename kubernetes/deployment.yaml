@@ -39,12 +39,45 @@
 #         ports:
 #         - containerPort: 80
 
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: natours
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: natours
+#   template:
+#     metadata:
+#       labels:
+#         app: natours
+#     spec:
+#       containers:
+#         - name: natours
+#           image: 686317197365.dkr.ecr.us-east-1.amazonaws.com/natours:latest
+#           ports:
+#             - containerPort: 3000
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: natours
+# spec:
+#   selector:
+#     app: natours
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 3000
+#   type: LoadBalancer
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: natours
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: natours
@@ -57,18 +90,8 @@ spec:
         - name: natours
           image: 686317197365.dkr.ecr.us-east-1.amazonaws.com/natours:latest
           ports:
-            - containerPort: 3000
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: natours
-spec:
-  selector:
-    app: natours
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
-  type: LoadBalancer
+            - containerPort: 80
+      imagePullSecrets:
+        - name: ecr-credentials  # Reference the created secret here
+
 
