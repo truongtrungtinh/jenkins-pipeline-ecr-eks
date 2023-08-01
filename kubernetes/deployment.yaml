@@ -90,21 +90,6 @@ spec:
         - name: natours
           image: 686317197365.dkr.ecr.us-east-1.amazonaws.com/natours:latest
           ports:
-            - containerPort: 80
+            - containerPort: 3000
       imagePullSecrets:
         - name: ecr-credentials  # Reference the created secret here
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: natours
-spec:
-  selector:
-    app: natours
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: ClusterIP

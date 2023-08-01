@@ -1,0 +1,53 @@
+# service.yaml
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: nginx
+#   labels:
+#     app: nginx
+# spec:
+#   ports:
+#   - name: http
+#     port: 80
+#     protocol: TCP
+#     targetPort: 80
+#   selector:
+#     app: nginx
+#   type: LoadBalancer
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: natours-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+# spec:
+#   rules:
+#     - http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: natours
+#                 port:
+#                   number: 80
+
+# sample-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: natours-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"  # Specify the Ingress Controller class
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: natours  
+                port:
+                  number: 80
