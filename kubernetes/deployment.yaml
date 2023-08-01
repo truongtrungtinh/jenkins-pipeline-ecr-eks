@@ -94,4 +94,17 @@ spec:
       imagePullSecrets:
         - name: ecr-credentials  # Reference the created secret here
 
+---
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: natours
+spec:
+  selector:
+    app: natours
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
