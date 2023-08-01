@@ -7,7 +7,7 @@ const handleCastErrorDB = (err) => {
 
 const handleDuplicateFieldsDB = (err) => {
   const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
-  // console.log(value);
+  console.log(value);
 
   const message = `Duplicate field value: ${value}. Please use another value!`;
   return new AppError(message, 400);
@@ -40,7 +40,7 @@ const sendErrorDev = (err, req, res) => {
   // B) RENDERED WEBSITE
   console.error('ERROR 💥', err);
   return res.status(err.statusCode).render('error', {
-    title: 'Something went wrong!',
+    // title: 'Something went wrong!',
     msg: err.message,
   });
 };
@@ -59,10 +59,10 @@ const sendErrorProd = (err, req, res) => {
     // 1) Log error
     console.error('ERROR 💥', err);
     // 2) Send generic message
-    return res.status(500).json({
-      status: 'error',
-      message: 'Something went very wrong!',
-    });
+    // return res.status(500).json({
+    //   status: 'error',
+    //   // message: 'Something went very wrong!',
+    // });
   }
 
   // B) RENDERED WEBSITE
@@ -70,7 +70,7 @@ const sendErrorProd = (err, req, res) => {
   if (err.isOperational) {
     // console.log(err);
     return res.status(err.statusCode).render('error', {
-      title: 'Something went wrong!',
+      // title: 'Something went wrong!',
       msg: err.message,
     });
   }
@@ -79,7 +79,7 @@ const sendErrorProd = (err, req, res) => {
   console.error('ERROR 💥', err);
   // 2) Send generic message
   return res.status(err.statusCode).render('error', {
-    title: 'Something went wrong!',
+    // title: 'Something went wrong!',
     msg: 'Please try again later.',
   });
 };

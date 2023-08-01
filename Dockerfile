@@ -20,7 +20,7 @@ ENV EMAIL_PORT=25
 ENV EMAIL_FROM=hello@jonas.io
 ENV SENDGRID_USERNAME=apikey
 ENV SENDGRID_PASSWORD=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
-ENV STRIPE_SECRET_KEY=sk_test_iL5ZUfa6lae7nWHwv0a7MjNk00BpcyaGWr
+ENV STRIPE_SECRET_KEY=sk_test_5fD98o0z4TFd3VWqRthR57CR00V24ndZKQ
 
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
